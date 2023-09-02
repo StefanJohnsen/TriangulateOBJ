@@ -1,8 +1,9 @@
 # Triangulation of obj indices
 Triangulation of a polygon is the process of dividing a polygon into a series of triangles
 
-To illustrate the concept of triangulation, let's consider a straightforward OBJ file (clock.obj) featuring a clock-like mesh. This mesh is constructed with vertices resembling a clock, where the 12 o'clock position naturally resides at the top.
+To illustrate the concept of triangulation, let's consider a straightforward OBJ file featuring a clock-like mesh. This mesh is constructed with vertices resembling a clock, where the 12 o'clock position naturally resides at the top.
 
+clock-triangles.obj
 <pre>
 # .obj file for a circle using clock numbers as vertices
 
@@ -44,6 +45,28 @@ The most widespread method for representing meshes in OBJ files is by using tria
 However, issues can arise when faces are initially defined as polygons. 
 To resolve this issue, we can triangulate the polygon.
 
+Let's take a look at an OBJ file featuring polygons.
+
+clock-polygon.obj
+<pre>
+# .obj file for a circle using clock numbers as vertices
+
+v 0.5 0.866 0.0     #  1 o'clock
+v 0.866 0.5 0.0     #  2 o'clock
+v 1.0 0.0 0.0       #  3 o'clock
+v 0.866 -0.5 0.0    #  4 o'clock
+v 0.5 -0.866 0.0    #  5 o'clock
+v 0.0 -1.0 0.0      #  6 o'clock
+v -0.5 -0.866 0.0   #  7 o'clock
+v -0.866 -0.5 0.0   #  8 o'clock
+v -1.0 0.0 0.0      #  9 o'clock
+v -0.866 0.5 0.0    # 10 o'clock
+v -0.5 0.866 0.0    # 11 o'clock
+v 0.0 1.0 0.0       # 12 o'clock
+
+g polygon
+f 1 2 3 4 5 6 7 8 9 10 11 12
+</pre>
 
 
 
