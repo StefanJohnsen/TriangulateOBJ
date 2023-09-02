@@ -40,6 +40,16 @@ Open the file in **Visual Studio** and you will see the clock and all the triang
 
 ![Triangles](https://github.com/StefanJohnsen/TriangulationOBJ/blob/main/Pictures/clock-triangles.png)
 
+The most widespread method for representing meshes in OBJ files is by using triangles. 
+However, issues can arise when faces are initially defined as polygons. 
+To resolve this issue, we can triangulate the polygon.
+
+
+
+
+
+
+
 When dealing with polygons within a .obj file, we can follow a routine to convert these polygons into triangles for better compatibility and rendering. 
 
 Let's assume we have a face list denoted as f(n) = {f0, f1, f2, ... pN}. We want to perform a process that generates triangles using these indices.
