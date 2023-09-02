@@ -42,10 +42,10 @@ Open the file in **Visual Studio** and you will see the clock and all the triang
 ![Triangles](https://github.com/StefanJohnsen/TriangulationOBJ/blob/main/Pictures/clock-triangles.png)
 
 The most widespread method for representing meshes in OBJ files is by using triangles. 
-However, issues can arise when faces are initially defined as polygons. 
+However, issues can arise when faces are defined as polygons. 
 To resolve this issue, we can triangulate the polygon.
 
-Let's take a look at an OBJ file featuring polygons.
+Let's take a look at then OBJ file where face is a polygon.
 
 clock-polygon.obj
 <pre>
