@@ -41,7 +41,7 @@ f 13 12 1
 Open the file in **Visual Studio** and you will see the clock and all the triangles as shown below (without numbers).
 
 ![Triangles](https://github.com/StefanJohnsen/TriangulationOBJ/blob/main/Pictures/clock-triangles.jpg)
-*(PS: Hide the grid and turn on Wire frame in Visual Studio)*
+<br>*(PS: Hide the grid and turn on Wire frame in Visual Studio)*
 
 The most widespread method for representing meshes in OBJ files is by using triangles. It can be a problem when faces in an OBJ file are presented as polygons for some viewers. Not all OBJ viewers or software applications support polygonal faces directly, which can lead to compatibility issues or incorrect rendering. To ensure better compatibility and proper display, converting these polygonal faces into triangles through triangulation is a common solution.
 
