@@ -72,7 +72,9 @@ Notice that the center vertex has been omitted since it's unnecessary when showc
 
 ![Triangles](https://github.com/StefanJohnsen/TriangulationOBJ/blob/main/Pictures/clock-polygon.jpg)
 
-Therefore, the significant question here is, how can we convert these polygons, including other, more advanced polygons, into triangles?
+Therefore, the significant question here is, how can we convert this polygon, and others, into triangles?
+
+
 
 
 
