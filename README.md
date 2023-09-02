@@ -45,7 +45,7 @@ Open the file in **Visual Studio** and you will see the clock and all the triang
 
 The most widespread method for representing meshes in OBJ files is by using triangles. 
 
-Let's take a look at then OBJ file where face is a polygon.
+Let's examine an OBJ file where the faces are represented as polygons.
 
 clock-polygon.obj
 <pre>
@@ -68,7 +68,7 @@ g polygon
 f 1 2 3 4 5 6 7 8 9 10 11 12
 </pre>
 
-Notice that the center vertex has been omitted since it's unnecessary when showcasing the clock's polygonal shape.
+Notice that the center vertex has been omitted since it's unnecessary when the clock's is a polygon.
 
 ![Triangles](https://github.com/StefanJohnsen/TriangulationOBJ/blob/main/Pictures/clock-polygon.jpg)
 
