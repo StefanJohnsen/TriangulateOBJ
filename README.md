@@ -1,6 +1,8 @@
 # Triangulation of obj indices
 Triangulation of a polygon is the process of dividing a polygon into a series of triangles
 
+### The problem
+
 To illustrate the concept of triangulation, let's consider a straightforward OBJ file featuring a clock-like mesh. This mesh is constructed with vertices resembling a clock, where the 12 o'clock position naturally resides at the top.
 
 clock-triangles.obj
@@ -69,6 +71,9 @@ f 1 2 3 4 5 6 7 8 9 10 11 12
 Notice that the center vertex has been omitted since it's unnecessary when showcasing the clock's polygonal shape.
 
 ![Triangles](https://github.com/StefanJohnsen/TriangulationOBJ/blob/main/Pictures/clock-polygon.jpg)
+
+Therefore, the significant question here is, how can we convert these polygons, including other, more advanced polygons, into triangles?
+
 
 
 When dealing with polygons within a .obj file, we can follow a routine to convert these polygons into triangles for better compatibility and rendering. 
