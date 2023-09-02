@@ -25,7 +25,7 @@ f 1 2 3 4 5 6 7 8 9 10 11 12
 
 As observed, a polygon is present.<br>
 
-![Polygon](https://github.com/StefanJohnsen/WavefrontOBJ/blob/main/Pictures/triangulation.jpg)
+![Polygon](https://github.com/StefanJohnsen/TriangulationOBJ/blob/main/Pictures/triangulation.jpg)
 
 When dealing with polygons within a .obj file, we can follow a routine to convert these polygons into triangles for better compatibility and rendering. 
 
