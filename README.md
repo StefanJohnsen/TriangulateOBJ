@@ -1,9 +1,7 @@
 # Triangulation of obj indices
 Triangulation of a polygon is the process of dividing a polygon into a series of triangles
 
-To illustrate the concept of triangulation, let's consider a straightforward OBJ file featuring a clock-like mesh. This mesh is constructed with vertices resembling a clock, where the 12 o'clock position naturally resides at the top.
-
-[clock.obj](https://github.com/StefanJohnsen/TriangulationOBJ/blob/main/Pictures/clock.obj)
+To illustrate the concept of triangulation, let's consider a straightforward OBJ file (clock.obj) featuring a clock-like mesh. This mesh is constructed with vertices resembling a clock, where the 12 o'clock position naturally resides at the top.
 
 <pre>
 # .obj file for a circle using clock numbers as vertices
@@ -37,7 +35,8 @@ f 13 11 12
 f 13 12 1  
 </pre>
 
-As observed, a polygon is present.<br>
+Open the file in **Visual Studio** and you will see the clock and all the triangles.
+*(PS: Hide the grid and turn on Wire frame in Visual Studio)*
 
 ![Triangles](https://github.com/StefanJohnsen/TriangulationOBJ/blob/main/Pictures/clock-triangles.png)
 
