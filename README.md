@@ -3,7 +3,7 @@ Triangulation of a polygon is the process of dividing a polygon into a series of
 
 To illustrate the concept of triangulation, let's consider a straightforward OBJ file featuring a clock-like mesh. This mesh is constructed with vertices resembling a clock, where the 12 o'clock position naturally resides at the top.
 
-![Triangles](https://github.com/StefanJohnsen/TriangulationOBJ/blob/main/Pictures/clock.obj)
+[clock.obj](https://github.com/StefanJohnsen/TriangulationOBJ/blob/main/Pictures/clock.obj)
 
 <pre>
 # .obj file for a circle using clock numbers as vertices
