@@ -78,19 +78,19 @@ Therefore, the significant question here is, how can we convert this polygon, an
 
 # Polygon Types
 
-## Convex Polygon
+### Convex Polygon
 
 A convex polygon is a polygon with the following characteristics:
 - All interior angles are less than 180 degrees.
 - Any line segment drawn between two points inside the polygon will always remain entirely inside the polygon.
 
-## Concave Polygon
+### Concave Polygon
 
 A concave polygon is a polygon with the following characteristics:
 - It has at least one interior angle that measures more than 180 degrees.
 - "Dents" or "indentations" in the shape result in some angles being greater than 180 degrees.
 
-## Complex Polygon
+### Complex Polygon
 
 A complex polygon is a polygon with the following characteristics:
 - It contains both convex and concave regions within its boundary.
