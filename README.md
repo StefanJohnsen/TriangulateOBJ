@@ -118,7 +118,7 @@ In conclusion, the fan algorithm is a reliable and fast choice for triangulating
 
 ### Triangulation Algorithm using Indices
 
-Face list : f(i) = {f0, f1, f2, ... pN},  0 <= i < N
+f(i) = {f0, f1, f2, ... },  0 <= i < N
 
 Given a list of indices `f(i)` representing the vertices of a polygon, where `i` ranges from 0 to `N-1`, and `N` is the number of indices in the list, the following steps are conducted to perform triangulation:
 
