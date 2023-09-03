@@ -1,20 +1,32 @@
-// TriangulateOBJ.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
+#include <vector>
+
+// Function to triangulate a polygon represented by a list of indices
+std::vector<std::vector<int>> triangulatePolygon(const std::vector<int>& indices)
+{
+    if (indices.size() < 3) return {};
+
+    std::vector<std::vector<int>> triangles;
+
+        for (int i = 1; i < indices.size() - 1; ++i)
+            triangles.push_back({ indices[0], indices[i], indices[i + 1] });
+
+        return triangles;
+}
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    std::vector<int> polygonIndices = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 };
+
+    std::vector<std::vector<int>> triangles = triangulatePolygon(polygonIndices);
+
+    for (const auto& triangle : triangles)
+    {
+        std::cout << "f ";
+        for (const auto& index : triangle)
+            std::cout << index << " ";
+        std::cout << std::endl;
+    }
+
+    return 0;
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
