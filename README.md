@@ -213,5 +213,8 @@ f 1 11 12
 Open clock-polygon.obj in Visual Studio
 
 ![Clock-Polygon](https://github.com/StefanJohnsen/TriangulationOBJ/blob/main/Pictures/triangulation.jpg)
-The polygon has been triangulated.
+<br>The polygon has been triangulated.
+
+## License
+This code is provided under the MIT License. Feel free to use and modify it for your own projects.
 
