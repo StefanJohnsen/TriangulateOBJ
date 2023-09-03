@@ -138,32 +138,47 @@ Given a list of indices `f(i)` representing the vertices of a polygon, where `i`
 #include <vector>
 
 // Function to triangulate a polygon represented by a list of indices
-std::vector<std::vector<int>> triangulatePolygon(const std::vector<int>& indices) {
+std::vector<std::vector<int>> triangulatePolygon(const std::vector<int>& indices)
+{
+    if(indices.size() < 3 } return {}
+
     std::vector<std::vector<int>> triangles;
-    for (int i = 1; i < indices.size() - 1; ++i) {
-        std::vector<int> triangle = {indices[0], indices[i], indices[i + 1]};
-        triangles.push_back(triangle);
-    }
+
+    for (int i = 1; i < indices.size() - 1; ++i)
+        triangles.push_back({indices[0], indices[i], indices[i + 1]});
+
     return triangles;
 }
 
-int main() {
-    // Example usage with a larger set of polygon indices:
+int main()
+{
     std::vector<int> polygonIndices = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
+
     std::vector<std::vector<int>> triangles = triangulatePolygon(polygonIndices);
 
-    // Print the resulting triangles
-    for (const auto& triangle : triangles) {
-        std::cout << "Triangle: ";
-        for (const auto& vertex : triangle) {
-            std::cout << vertex << " ";
-        }
+    for (const auto& triangle : triangles)
+    {
+        std::cout << "f ";
+        for (const auto& index : triangle)
+            std::cout << index << " ";
         std::cout << std::endl;
     }
 
     return 0;
 }
 ```
+<pre>
+f 1 2 3
+f 1 3 4
+f 1 4 5
+f 1 5 6
+f 1 6 7
+f 1 7 8
+f 1 8 9
+f 1 9 10
+f 1 10 11
+f 1 11 12
+</pre>
 
 *Another algorithm in existence is the "ear clipping triangulation algorithm." This algorithm involves the process of identifying an "ear" within the current polygon and subsequently removing it. In its initial form, Meister's version of the ear clipping algorithm has a time complexity of O(n^3), with the majority of the time being allocated to verifying the validity of newly formed triangles.*
 
