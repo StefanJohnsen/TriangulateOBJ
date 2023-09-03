@@ -76,9 +76,32 @@ It can be a problem when faces in an OBJ file are presented as polygons for some
 
 Therefore, the significant question here is, how can we convert this polygon, and others, into triangles?
 
-## Type of polygons
+# Polygon Types
+
+## Convex Polygon
+
+A convex polygon is a polygon with the following characteristics:
+- All interior angles are less than 180 degrees.
+- Any line segment drawn between two points inside the polygon will always remain entirely inside the polygon.
+
+## Concave Polygon
+
+A concave polygon is a polygon with the following characteristics:
+- It has at least one interior angle that measures more than 180 degrees.
+- "Dents" or "indentations" in the shape result in some angles being greater than 180 degrees.
+
+## Complex Polygon
+
+A complex polygon is a polygon with the following characteristics:
+- It contains both convex and concave regions within its boundary.
+- It combines elements of both convex and concave shapes, resulting in a more intricate and irregular overall structure.
+
+In summary, these terms describe the overall shape characteristics of polygons. Convex polygons have all interior angles less than 180 degrees, concave polygons have at least one angle greater than 180 degrees, and complex polygons combine both convex and concave features within their boundaries.
 
 ![Clock-Polygon](https://github.com/StefanJohnsen/TriangulationOBJ/blob/main/Pictures/polygons.jpg) 
+
+
+
 
 
 
