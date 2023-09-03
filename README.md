@@ -165,6 +165,9 @@ int main()
     return 0;
 }
 ```
+
+Output
+
 <pre>
 f 1 2 3
 f 1 3 4
@@ -178,9 +181,7 @@ f 1 10 11
 f 1 11 12
 </pre>
 
-Replace the section g polygon with face list above
-
-clock-polygon.obj
+Replace the section g polygon with face list above in the clock-polygon.obj
 <pre>
 # .obj file for a circle using clock numbers as vertices
 
