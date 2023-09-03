@@ -130,7 +130,7 @@ Given a list of indices `f(i)` representing the vertices of a polygon, where `i`
 
 4. **Repeat Triangle Creation:** Repeat the triangle creation process for each `i` within the specified range, effectively creating a series of triangles that approximate the original polygon based on the provided indices.
 
-
+![Clock-Polygon](https://github.com/StefanJohnsen/TriangulationOBJ/blob/main/Pictures/triangulation.jpg)
 
 
 
