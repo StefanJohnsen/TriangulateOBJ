@@ -132,7 +132,38 @@ Given a list of indices `f(i)` representing the vertices of a polygon, where `i`
 
 ![Clock-Polygon](https://github.com/StefanJohnsen/TriangulationOBJ/blob/main/Pictures/triangulation.jpg)
 
+# Triangulation Code
+```cpp
+#include <iostream>
+#include <vector>
 
+// Function to triangulate a polygon represented by a list of indices
+std::vector<std::vector<int>> triangulatePolygon(const std::vector<int>& indices) {
+    std::vector<std::vector<int>> triangles;
+    for (int i = 1; i < indices.size() - 1; ++i) {
+        std::vector<int> triangle = {indices[0], indices[i], indices[i + 1]};
+        triangles.push_back(triangle);
+    }
+    return triangles;
+}
+
+int main() {
+    // Example usage with a larger set of polygon indices:
+    std::vector<int> polygonIndices = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
+    std::vector<std::vector<int>> triangles = triangulatePolygon(polygonIndices);
+
+    // Print the resulting triangles
+    for (const auto& triangle : triangles) {
+        std::cout << "Triangle: ";
+        for (const auto& vertex : triangle) {
+            std::cout << vertex << " ";
+        }
+        std::cout << std::endl;
+    }
+
+    return 0;
+}
+```
 
 *Another algorithm in existence is the "ear clipping triangulation algorithm." This algorithm involves the process of identifying an "ear" within the current polygon and subsequently removing it. In its initial form, Meister's version of the ear clipping algorithm has a time complexity of O(n^3), with the majority of the time being allocated to verifying the validity of newly formed triangles.*
 
