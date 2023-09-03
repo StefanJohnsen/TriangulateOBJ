@@ -130,10 +130,91 @@ Given a list of indices `f(i)` representing the vertices of a polygon, where `i`
 
 4. **Repeat Triangle Creation:** Repeat the triangle creation process for each `i` within the specified range, effectively creating a series of triangles that approximate the original polygon based on the provided indices.
 
+# Triangulation Code
+```cpp
+#include <iostream>
+#include <vector>
+
+// Function to triangulate a polygon represented by a list of indices
+std::vector<std::vector<int>> triangulatePolygon(const std::vector<int>& indices)
+{
+    if(indices.size() < 3 } return {}
+
+    std::vector<std::vector<int>> triangles;
+
+    for (int i = 1; i < indices.size() - 1; ++i)
+        triangles.push_back({indices[0], indices[i], indices[i + 1]});
+
+    return triangles;
+}
+
+int main()
+{
+    std::vector<int> polygonIndices = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
+
+    std::vector<std::vector<int>> triangles = triangulatePolygon(polygonIndices);
+
+    for (const auto& triangle : triangles)
+    {
+        std::cout << "f ";
+        for (const auto& index : triangle)
+            std::cout << index << " ";
+        std::cout << std::endl;
+    }
+
+    return 0;
+}
+```
+
+Output
+
+<pre>
+f 1 2 3
+f 1 3 4
+f 1 4 5
+f 1 5 6
+f 1 6 7
+f 1 7 8
+f 1 8 9
+f 1 9 10
+f 1 10 11
+f 1 11 12
+</pre>
+
+Replace the section g polygon with face list above in the clock-polygon.obj
+<pre>
+# .obj file for a circle using clock numbers as vertices
+
+v 0.5 0.866 0.0     #  1 o'clock
+v 0.866 0.5 0.0     #  2 o'clock
+v 1.0 0.0 0.0       #  3 o'clock
+v 0.866 -0.5 0.0    #  4 o'clock
+v 0.5 -0.866 0.0    #  5 o'clock
+v 0.0 -1.0 0.0      #  6 o'clock
+v -0.5 -0.866 0.0   #  7 o'clock
+v -0.866 -0.5 0.0   #  8 o'clock
+v -1.0 0.0 0.0      #  9 o'clock
+v -0.866 0.5 0.0    # 10 o'clock
+v -0.5 0.866 0.0    # 11 o'clock
+v 0.0 1.0 0.0       # 12 o'clock
+
+f 1 2 3
+f 1 3 4
+f 1 4 5
+f 1 5 6
+f 1 6 7
+f 1 7 8
+f 1 8 9
+f 1 9 10
+f 1 10 11
+f 1 11 12
+</pre>
+
+Open clock-polygon.obj in Visual Studio
+
 ![Clock-Polygon](https://github.com/StefanJohnsen/TriangulationOBJ/blob/main/Pictures/triangulation.jpg)
+<br>The polygon has been triangulated.
 
+## License
+This code is provided under the MIT License. Feel free to use and modify it for your own projects.
 
-
-*Another algorithm in existence is the "ear clipping triangulation algorithm." This algorithm involves the process of identifying an "ear" within the current polygon and subsequently removing it. In its initial form, Meister's version of the ear clipping algorithm has a time complexity of O(n^3), with the majority of the time being allocated to verifying the validity of newly formed triangles.*
-
-Our routine is straightforward and efficient, characterized by a time complexity of O(n). The procedure will prove effective and correct for all concave polygons. However, convex or intricate polygons may not yield accurate triangulation results. 
