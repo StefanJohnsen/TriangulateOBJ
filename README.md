@@ -102,6 +102,8 @@ In summary, these terms describe the overall shape characteristics of polygons. 
 
 # Fan Algorithm for Convex Polygon Triangulation
 
+### Considerations and Limitations
+
 The fan algorithm is indeed a common and efficient method for triangulating convex polygons, and it typically works well for this specific class of polygons. However, there are some important considerations and limitations to keep in mind:
 
 - Convexity Requirement: The fan algorithm is designed specifically for convex polygons. It relies on the fact that all interior angles of a convex polygon are less than 180 degrees. If you apply the fan algorithm to a non-convex polygon (one with interior angles greater than 180 degrees), it may not produce correct results.
@@ -112,35 +114,25 @@ The fan algorithm is indeed a common and efficient method for triangulating conv
 
 - Degenerate Cases: In some cases, such as when vertices are collinear or very close together, the algorithm may produce degenerate triangles (triangles with zero area). Handling such cases appropriately may require additional checks.
 
-- Edge Cases: While the fan algorithm works well for most convex polygons, you should test it thoroughly with various convex polygon inputs to ensure it handles all edge cases correctly.
+In conclusion, the fan algorithm is a reliable and fast choice for triangulating convex polygons. 
 
-In conclusion, the fan algorithm is a reliable choice for triangulating convex polygons. Still, it's essential to ensure that your input meets the convexity requirement and that you handle any edge cases or degenerate situations that may arise during the triangulation process. If you need to triangulate non-convex polygons, you would need to use a different algorithm designed for that purpose, such as the ear-clipping algorithm or the Seidel's algorithm for general polygons.
+### Triangulation Algorithm using Indices
+
+Face list : f(i) = {f0, f1, f2, ... pN},  0 <= i < N
+
+Given a list of indices `f(i)` representing the vertices of a polygon, where `i` ranges from 0 to `N-1`, and `N` is the number of indices in the list, the following steps are conducted to perform triangulation:
+
+1. **Start with the Initial Index:** Begin with the initial index, `f(0)`.
+
+2. **Iterate over Index Range:** Iterate over the range of index `i` from 1 to `N-1`.
+
+3. **Create Triangles:** For each index `i`, create a triangle using the indices `f(0)`, `f(i)`, and `f(i+1)`. This forms a triangle that connects the vertex represented by `f(0)`, the vertex represented by `f(i)`, and the vertex represented by `f(i+1)` in the list of indices.
+
+4. **Repeat Triangle Creation:** Repeat the triangle creation process for each `i` within the specified range, effectively creating a series of triangles that approximate the original polygon based on the provided indices.
 
 
 
 
-
-
-
-
-
-
-When dealing with polygons within a .obj file, we can follow a routine to convert these polygons into triangles for better compatibility and rendering. 
-
-Let's assume we have a face list denoted as f(n) = {f0, f1, f2, ... pN}. We want to perform a process that generates triangles using these indices.
-
-For each index in the list, the following steps are conducted:
-
-- We begin with the initial polygon, f(0), from the list.
-
-- Iterate over the range of indices i from 0 to N-1 (where N is the total number of indices in the list).
-
-- For each i, we create a triangle using the indices of three points: f(0), f(i), and f(i+1). 
-This forms a triangle that connects the starting indices(0) of the polygon, the current indices(i), and the next polygon indices(i+1) in the list.
-
-- Repeat the triangle creation process for each i within the specified range, effectively creating a series of triangles that approximate the original polygon.
-
-Following this routine, we break down complex polygons into simpler triangular elements, making it easier to work with them in 3D rendering and other applications that expect triangles. This conversion process ensures that the resulting triangles provide a good representation of the original polygon's shape and structure.
 
 *Another algorithm in existence is the "ear clipping triangulation algorithm." This algorithm involves the process of identifying an "ear" within the current polygon and subsequently removing it. In its initial form, Meister's version of the ear clipping algorithm has a time complexity of O(n^3), with the majority of the time being allocated to verifying the validity of newly formed triangles.*
 
