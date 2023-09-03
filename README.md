@@ -1,5 +1,5 @@
 # Triangulation
-Triangulation of a polygon is the process of dividing a polygon into a series of triangles
+Triangulation of a polygon is the process of dividing a polygon into a series of triangles.
 
 ## Context
 
@@ -100,12 +100,22 @@ In summary, these terms describe the overall shape characteristics of polygons. 
 
 ![Clock-Polygon](https://github.com/StefanJohnsen/TriangulationOBJ/blob/main/Pictures/polygons.jpg) 
 
+# Fan Algorithm for Convex Polygon Triangulation
 
+The fan algorithm is indeed a common and efficient method for triangulating convex polygons, and it typically works well for this specific class of polygons. However, there are some important considerations and limitations to keep in mind:
 
+- Convexity Requirement: The fan algorithm is designed specifically for convex polygons. It relies on the fact that all interior angles of a convex polygon are less than 180 degrees. If you apply the fan algorithm to a non-convex polygon (one with interior angles greater than 180 degrees), it may not produce correct results.
 
+- Efficiency: The fan algorithm is efficient for convex polygons and has a time complexity of O(n), where n is the number of vertices in the polygon. This makes it suitable for real-time applications.
 
+- Vertex Order: The algorithm assumes that the vertices of the convex polygon are provided in a specific order, such as in clockwise or counterclockwise order. If the vertices are not in the expected order, you may need to preprocess the input to ensure they are correctly ordered.
 
-## Triangulation and Fanning
+- Degenerate Cases: In some cases, such as when vertices are collinear or very close together, the algorithm may produce degenerate triangles (triangles with zero area). Handling such cases appropriately may require additional checks.
+
+- Edge Cases: While the fan algorithm works well for most convex polygons, you should test it thoroughly with various convex polygon inputs to ensure it handles all edge cases correctly.
+
+In conclusion, the fan algorithm is a reliable choice for triangulating convex polygons. Still, it's essential to ensure that your input meets the convexity requirement and that you handle any edge cases or degenerate situations that may arise during the triangulation process. If you need to triangulate non-convex polygons, you would need to use a different algorithm designed for that purpose, such as the ear-clipping algorithm or the Seidel's algorithm for general polygons.
+
 
 
 
