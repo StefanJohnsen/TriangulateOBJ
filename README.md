@@ -230,7 +230,7 @@ f 1 11 12
 
 Open convex.triangulated.obj in Visual Studio.
 
-![triangulation](https://github.com/StefanJohnsen/TriangulationNEW/blob/main/Pictures/triangulation.jpg)
+![triangulation](https://github.com/StefanJohnsen/TriangulateOBJ/blob/main/Pictures/triangulation.jpg)
 <br>*The polygon has been triangulated.*
 
 # License
