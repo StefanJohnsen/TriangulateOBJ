@@ -1,4 +1,4 @@
-# Triangulation
+# Triangulation ([New release](https://github.com/StefanJohnsen/TriangulateOBJ-App/releases))
 A lightweight, header-only file that converts all polygons in a Wavefront OBJ file to triangles.
 
 ### Sample console application
