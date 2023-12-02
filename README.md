@@ -2,7 +2,7 @@
 A lightweight, header-only file that converts all polygons in a Wavefront OBJ file to triangles.
 
 ### Sample console application
-This repository houses a header-only library with comprehensive features. We've developed a console application for a practical demonstration of its usage. 
+We've developed a console application for a practical demonstration of its usage. 
 This sample application is found in the [TriangulateOBJ-App](https://github.com/StefanJohnsen/TriangulateOBJ-App) repository. It serves as a guide on integrating and utilising the functions provided by our header-only file.
 
 ### Intended Users
