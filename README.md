@@ -1,5 +1,5 @@
 # Triangulation
-A lightweight, header-only file that converts all polygons in a Wavefront OBJ file to triangles.
+A header-only file that converts all polygons in a Wavefront OBJ file to triangles.
 
 ### Sample console application
 We've developed a console application for a practical demonstration of its usage. 
