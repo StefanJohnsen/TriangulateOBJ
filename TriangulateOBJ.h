@@ -591,8 +591,6 @@ namespace obj
 
 		*(--line) = '\0';
 
-		std::string text2(lineStart);
-
 		return lineStart;
 	}
 
@@ -631,7 +629,7 @@ namespace obj
 		return {u.y * v.z - u.z * v.y , u.z * v.x - u.x * v.z , u.x * v.y - u.y * v.x};
 	}
 
-	inline float dot(const Point& u, const Point& v)
+	inline double dot(const Point& u, const Point& v)
 	{
 		return u.x * v.x + u.y * v.y + u.z * v.z;
 	}
@@ -754,10 +752,14 @@ namespace obj
 			polygon = {polygon.rbegin() , polygon.rend()};
 	}
 
-	inline void getBarycentricTriangleCoordinates(const Point& a, const Point& b, const Point& c, const Point& p, float& alpha, float& beta, float& gamma)
+	inline bool pointInsideOrEdgeTriangle(const Point& a, const Point& b, const Point& c, const Point& p, bool& edge)
 	{
-		alpha = beta = gamma = -2 * epsilon;
+		static double zero = std::numeric_limits<double>::epsilon();
 
+		// Initialize edge to false
+		edge = false;
+
+		// Vectors from point p to vertices of the triangle
 		const auto v0 = c - a;
 		const auto v1 = b - a;
 		const auto v2 = p - a;
@@ -768,22 +770,27 @@ namespace obj
 		const auto dot11 = dot(v1, v1);
 		const auto dot12 = dot(v1, v2);
 
-		const float denom = dot00 * dot11 - dot01 * dot01;
+		// Check for degenerate triangle
+		const auto denom = dot00 * dot11 - dot01 * dot01;
 
-		if( fabs(denom) < epsilon ) return;
-				
-		alpha = (dot11 * dot02 - dot01 * dot12) / denom;
-		beta  = (dot00 * dot12 - dot01 * dot02) / denom;
-		gamma = 1.0f - alpha - beta;
-	}
+		if( std::abs(denom) < zero )
+		{
+			// The triangle is degenerate (i.e., has no area)
+			return false;
+		}
 
-	inline bool pointInsideOrEdgeTriangle(const Point& a, const Point& b, const Point& c, const Point& p)
-	{
-		float alpha, beta, gamma;
+		// Compute barycentric coordinates
+		const auto invDenom = 1.0 / denom;
 
-		getBarycentricTriangleCoordinates(a, b, c, p, alpha, beta, gamma);
+		const auto u = (dot11 * dot02 - dot01 * dot12) * invDenom;
+		const auto v = (dot00 * dot12 - dot01 * dot02) * invDenom;
 
-		return (alpha >= -epsilon) && (beta >= -epsilon) && (gamma >= -epsilon);
+		// Check for edge condition
+		if( std::abs(u) < zero || std::abs(v) < zero || std::abs(u + v - 1) < zero )
+			edge = true;
+
+		// Check if point is inside the triangle (including edges)
+		return (u >= 0.0) && (v >= 0.0) && (u + v < 1.0);
 	}
 
 	inline void removeConsecutiveEqualItems(std::vector<Point>& list)
@@ -815,6 +822,8 @@ namespace obj
 
 		if( n == 3 ) return true;
 
+		bool edge(false);
+
 		const auto prevIndex = (index - 1 + n) % n;
 		const auto itemIndex = index % n;
 		const auto nextIndex = (index + 1) % n;
@@ -834,7 +843,7 @@ namespace obj
 			if( i == itemIndex ) continue;
 			if( i == nextIndex ) continue;
 
-			if( pointInsideOrEdgeTriangle(prev, item, next, polygon[i]) )
+			if( pointInsideOrEdgeTriangle(prev, item, next, polygon[i], edge) )
 				return false;
 		}
 
@@ -875,6 +884,34 @@ namespace obj
 		return maxIndex;
 	}
 
+	inline int getOverlappingEar(const std::vector<Point>& polygon, const Point& normal)
+	{
+		const auto n = static_cast<int>(polygon.size());
+
+		if( n == 3 ) return 0;
+
+		if( n == 0 ) return -1;
+
+		for( int index = 0; index < n; index++ )
+		{
+			const Point& prev = polygon[(index - 1 + n) % n];
+			const Point& item = polygon[index % n];
+			const Point& next = polygon[(index + 1) % n];
+
+			const auto u = normalize(item - prev);
+
+			if( turn(prev, u, normal, next) != TurnDirection::NoTurn )
+				continue;
+
+			const auto v = normalize(next - item);
+
+			if( dot(u, v) < 0.0 ) //Opposite direction -> ear
+				return index;
+		}
+
+		return -1;
+	}
+
 	//-------------------------------------------------------------------------------------------------------
 
 	inline std::vector<Triangle> fanTriangulation(std::vector<Point>& polygon)
@@ -893,15 +930,17 @@ namespace obj
 
 		makeClockwiseOrientation(polygon, normal);
 
-		auto n = polygon.size();
-
 		while( !polygon.empty() )
 		{
-			const int index = getBiggestEar(polygon, normal);
+			int index = getBiggestEar(polygon, normal);
 
-			if( index == -1 ) return {};
+			if( index == -1 )
+				index = getOverlappingEar(polygon, normal);
 
-			n = polygon.size();
+			if( index == -1 )
+				return {};
+
+			const auto n = polygon.size();
 
 			const Point& prev = polygon[(index - 1 + n) % n];
 			const Point& item = polygon[index % n];
