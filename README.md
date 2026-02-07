@@ -1,3 +1,4 @@
+![Banner](banner.jpg)
 # Triangulation
 A header-only file that converts all polygons in a Wavefront OBJ file to triangles.
 
